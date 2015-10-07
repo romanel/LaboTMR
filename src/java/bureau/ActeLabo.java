@@ -26,8 +26,8 @@ public class ActeLabo implements Serializable {
     private Long id;
     
     @Column
-    private Date date_demande_labo;
-    private Date date_realisation_acte; 
+    private String date_demande_labo;
+    private String date_realisation_acte; 
     private int NABM;
     private String unite_fonctionnel;
     
@@ -40,19 +40,19 @@ public class ActeLabo implements Serializable {
         this.id = id;
     }
 
-    public Date getDate_demande_labo() {
+    public String getDate_demande_labo() {
         return date_demande_labo;
     }
 
-    public void setDate_demande_labo(Date date_demande_labo) {
+    public void setDate_demande_labo(String date_demande_labo) {
         this.date_demande_labo = date_demande_labo;
     }
 
-    public Date getDate_realisation_acte() {
+    public String getDate_realisation_acte() {
         return date_realisation_acte;
     }
 
-    public void setDate_realisation_acte(Date date_realisation_acte) {
+    public void setDate_realisation_acte(String date_realisation_acte) {
         this.date_realisation_acte = date_realisation_acte;
     }
     

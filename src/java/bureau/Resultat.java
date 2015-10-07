@@ -26,7 +26,7 @@ public class Resultat implements Serializable {
     private Long id;
     
     @Column
-    private Date date;
+    private String date;
     private String resu;
 
     public Long getId() {
@@ -37,7 +37,7 @@ public class Resultat implements Serializable {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -45,7 +45,7 @@ public class Resultat implements Serializable {
         return resu;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
