@@ -14,6 +14,7 @@ import javax.persistence.Id;
 /**
  *
  * @author mtaussac
+ * @author rleguede
  */
 @Entity
 public class Admission implements Serializable {
