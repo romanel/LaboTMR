@@ -88,7 +88,7 @@ public class bureauTest {
     
     @Test
     public void boite() {
-        clean();
+       
         Services serv = new Services(DatabaseUtils.fact());
         List<Crayon> liste = new ArrayList<>();
         String[] couleurs = { "rouge", "jaune", "vert" };
