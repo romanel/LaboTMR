@@ -23,11 +23,12 @@ public class LaboService {
         this.fact = fact;
     }
     
-    public Admission newAdmission (int ipp, String nom, String prenom){
+    public Admission newAdmission (int ipp, String nom, String prenom/*,List<ActeLabo> actes*/){
         Admission adm = new Admission();
         adm.setIpp(ipp);
         adm.setNom(nom);
         adm.setPrenom(prenom);
+     //   adm.setActeslabo(actes);
         EntityManager em = fact.createEntityManager();
 	em.getTransaction( ).begin( );
         em.persist(adm);
