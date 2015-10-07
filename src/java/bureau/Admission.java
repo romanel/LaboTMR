@@ -6,10 +6,15 @@
 package bureau;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -22,7 +27,60 @@ public class Admission implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @Column
+    
+    private int iep;
+    private int ipp;
+    private String nom;
+    private String prenom;
+    
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    List<ActeLabo> acteslabo;
+    
+    public List<ActeLabo> getActeslabo() {
+        return acteslabo;
+    }
+    public void setActeslabo(List<ActeLabo> acteslabo) {
+        this.acteslabo = acteslabo;
+    }
+    
+    
+    public int getIep() {
+        return iep;
+    }
+    public void setIep(int iep) {
+    this.iep = iep;
+    }
 
+    public int getIpp() {
+        return ipp;
+    }
+
+    public void setIpp(int ipp) {
+        this.ipp = ipp;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+    
+    
+
+    
+    
     public Long getId() {
         return id;
     }
