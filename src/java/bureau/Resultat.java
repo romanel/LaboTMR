@@ -6,6 +6,8 @@
 package bureau;
 
 import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +24,10 @@ public class Resultat implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @Column
+    private Date date;
+    private String resu;
 
     public Long getId() {
         return id;
@@ -31,6 +37,22 @@ public class Resultat implements Serializable {
         this.id = id;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public String getResu() {
+        return resu;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setResu(String resu) {
+        this.resu = resu;
+    }
+     
     @Override
     public int hashCode() {
         int hash = 0;
