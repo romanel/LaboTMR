@@ -83,7 +83,29 @@ public class LaboService {
         return result;
     }
     
-
+    public List<Admission> getAllAdmission() {
+        EntityManager em = fact.createEntityManager();
+	TypedQuery<Admission> query = em.createQuery("SELECT adm FROM Admission adm", Admission.class);
+        List<Admission> res = query.getResultList();
+        em.close();
+        return res;
+    }
+    
+    public List<ActeLabo> getAllActeLabo() {
+        EntityManager em = fact.createEntityManager();
+	TypedQuery<ActeLabo> query = em.createQuery("SELECT acte FROM ActeLabo acte", ActeLabo.class);
+        List<ActeLabo> res = query.getResultList();
+        em.close();
+        return res;
+    }
+    
+    public List<Resultat> getAllResultat() {
+        EntityManager em = fact.createEntityManager();
+	TypedQuery<Resultat> query = em.createQuery("SELECT result FROM Resultat result", Resultat.class);
+        List<Resultat> res = query.getResultList();
+        em.close();
+        return res;
+    }
     
     public void deleteAllAdmission() {
         EntityManager em = fact.createEntityManager();
