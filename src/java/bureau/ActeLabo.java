@@ -6,6 +6,8 @@
 package bureau;
 
 import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +24,13 @@ public class ActeLabo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @Column
+    private Date date_demande_labo;
+    private Date date_realisation_acte; 
+    private int NABM;
+    private String unite_fonctionnel;
+    
 
     public Long getId() {
         return id;
@@ -30,6 +39,40 @@ public class ActeLabo implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Date getDate_demande_labo() {
+        return date_demande_labo;
+    }
+
+    public void setDate_demande_labo(Date date_demande_labo) {
+        this.date_demande_labo = date_demande_labo;
+    }
+
+    public Date getDate_realisation_acte() {
+        return date_realisation_acte;
+    }
+
+    public void setDate_realisation_acte(Date date_realisation_acte) {
+        this.date_realisation_acte = date_realisation_acte;
+    }
+    
+
+    public int getNABM() {
+        return NABM;
+    }
+
+    public void setNABM(int NABM) {
+        this.NABM = NABM;
+    }
+
+    public String getUnite_fonctionnel() {
+        return unite_fonctionnel;
+    }
+
+    public void setUnite_fonctionnel(String unite_fonctionnel) {
+        this.unite_fonctionnel = unite_fonctionnel;
+    }
+    
 
     @Override
     public int hashCode() {
