@@ -26,11 +26,10 @@ public class Admission implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long iep;
     
     @Column
-    
-    private int iep;
+
     private int ipp;
     private String nom;
     private String prenom;
@@ -46,12 +45,7 @@ public class Admission implements Serializable {
     }
     
     
-    public int getIep() {
-        return iep;
-    }
-    public void setIep(int iep) {
-    this.iep = iep;
-    }
+ 
 
     public int getIpp() {
         return ipp;
@@ -81,18 +75,18 @@ public class Admission implements Serializable {
 
     
     
-    public Long getId() {
-        return id;
+    public Long getIep() {
+        return iep;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIep(Long iep) {
+        this.iep = iep;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (iep != null ? iep.hashCode() : 0);
         return hash;
     }
 
@@ -103,7 +97,7 @@ public class Admission implements Serializable {
             return false;
         }
         Admission other = (Admission) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.iep == null && other.iep != null) || (this.iep != null && !this.iep.equals(other.iep))) {
             return false;
         }
         return true;
@@ -111,7 +105,7 @@ public class Admission implements Serializable {
 
     @Override
     public String toString() {
-        return "bureau.Admission[ id=" + id + " ]";
+        return "bureau.Admission[ id=" + iep + " ]";
     }
     
 }
