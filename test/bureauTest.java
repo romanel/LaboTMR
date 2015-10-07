@@ -65,11 +65,10 @@ public class bureauTest {
     // The methods must be annotated with annotation @Test. For example:
     
     
- 
-    
      
     @Test
     public void crayon() {
+        clean();
         Services serv = new Services(DatabaseUtils.fact());
         Crayon cr = serv.newCrayon("vert");
         assertNotNull(cr); 
@@ -89,6 +88,7 @@ public class bureauTest {
     
     @Test
     public void boite() {
+        clean();
         Services serv = new Services(DatabaseUtils.fact());
         List<Crayon> liste = new ArrayList<>();
         String[] couleurs = { "rouge", "jaune", "vert" };
