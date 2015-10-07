@@ -36,8 +36,8 @@ public class laboTest {
         serv.deleteAllAdmission();
         serv.deleteAllActeLabo();
         serv.deleteAllResultat();
-        List<ActeLabo> actelabo = serv.getAllActeLabo();
-        assert(actelabo.isEmpty());
+        //List<ActeLabo> actelabo = serv.getAllActeLabo();
+        //assert(actelabo.isEmpty());
     }
     
     @BeforeClass
@@ -81,6 +81,7 @@ public class laboTest {
         
     }
     
+    @Test
     public void actelabo() {
         clean();
         LaboService serv = new LaboService(DatabaseUtils.fact());
@@ -93,13 +94,14 @@ public class laboTest {
      //   List<Crayon> res = serv.getCrayonsByCouleurId("vert");
      //   assert(!res.isEmpty());
      //   assert(res.size() == 2);
-     */ 
+      */
         List<ActeLabo> res = serv.getAllActeLabo();
         assert(!res.isEmpty());
         assert(res.size() == 1);
         
     }
     
+    @Test
     public void resultat() {
         clean();
         LaboService serv = new LaboService(DatabaseUtils.fact());
@@ -112,7 +114,7 @@ public class laboTest {
      //   List<Crayon> res = serv.getCrayonsByCouleurId("vert");
      //   assert(!res.isEmpty());
      //   assert(res.size() == 2);
-     */ 
+     */
         List<Resultat> res = serv.getAllResultat();
         assert(!res.isEmpty());
         assert(res.size() == 1);
