@@ -37,7 +37,7 @@ public class LaboService {
         return adm;
     }
     
-    public ActeLabo newActeLabo (String date_dde, String date_real, int nabm, String uf, int id_res, int id_adm){
+    public ActeLabo newActeLabo (String date_dde, String date_real, int nabm, String uf, Long id_res, Long id_adm){
         ActeLabo acte = new ActeLabo();
         acte.setDate_demande_labo(date_dde);
         acte.setDate_realisation_acte(date_real);
@@ -53,7 +53,7 @@ public class LaboService {
         return acte;
     }
         
-    public Resultat newResultat (String date, String resu, int id_acte){
+    public Resultat newResultat (String date, String resu, Long id_acte){
         Resultat result = new Resultat();
         result.setDate(date);
         result.setResu(resu);
