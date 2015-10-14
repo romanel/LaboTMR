@@ -30,8 +30,8 @@ public class ActeLabo implements Serializable {
     private String date_realisation_acte; 
     private int NABM;
     private String unite_fonctionnel;
-    private Long id_resultat;
-    private Long id_adm; 
+    private Resultat resultat;
+    private Admission adm; 
 
     
     public Long getId() {
@@ -75,21 +75,23 @@ public class ActeLabo implements Serializable {
         this.unite_fonctionnel = unite_fonctionnel;
     }
 
-    public Long getId_resultat() {
-        return id_resultat;
+    public Resultat getResultat() {
+        return resultat;
     }
 
-    public void setId_resultat(Long id_resultat) {
-        this.id_resultat = id_resultat;
+    public void setResultat(Resultat resultat) {
+        this.resultat = resultat;
     }
 
-    public Long getId_adm() {
-        return id_adm;
+    public Admission getAdm() {
+        return adm;
     }
 
-    public void setId_adm(Long id_adm) {
-        this.id_adm = id_adm;
+    public void setAdm(Admission adm) {
+        this.adm = adm;
     }
+
+    
 
     
       

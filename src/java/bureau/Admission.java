@@ -34,19 +34,6 @@ public class Admission implements Serializable {
     private String nom;
     private String prenom;
     
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    List<ActeLabo> acteslabo;
-    
-    public List<ActeLabo> getActeslabo() {
-        return acteslabo;
-    }
-    public void setActeslabo(List<ActeLabo> acteslabo) {
-        this.acteslabo = acteslabo;
-    }
-    
-    
- 
-
     public int getIpp() {
         return ipp;
     }
