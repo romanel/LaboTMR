@@ -28,7 +28,7 @@ public class Resultat implements Serializable {
     @Column
     private String date;
     private String resu;
-    private ActeLabo actelabo;
+    private int id_actelabo;
 
     public Long getId() {
         return id;
@@ -54,13 +54,15 @@ public class Resultat implements Serializable {
         this.resu = resu;
     }
 
-    public ActeLabo getActelabo() {
-        return actelabo;
+    public int getId_actelabo() {
+        return id_actelabo;
     }
 
-    public void setActelabo(ActeLabo actelabo) {
-        this.actelabo = actelabo;
+    public void setId_actelabo(int id_actelabo) {
+        this.id_actelabo = id_actelabo;
     }
+
+    
      
        
     @Override
