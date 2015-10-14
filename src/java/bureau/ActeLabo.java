@@ -30,8 +30,18 @@ public class ActeLabo implements Serializable {
     private String date_realisation_acte; 
     private int NABM;
     private String unite_fonctionnel;
-    
+    private Resultat resultat;
 
+    
+    
+    public Resultat getResultat() {
+        return resultat;
+    }
+
+    public void setResultat(Resultat resultat) {
+        this.resultat = resultat;
+    }    
+    
     public Long getId() {
         return id;
     }
