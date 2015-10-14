@@ -132,16 +132,15 @@ public class laboTest {
         
         ActeLabo acte1 = serv.newActeLabo("2015/09/21","2015/09/22",0040,"Obstetrique", null, adm);
         ActeLabo acte2 = serv.newActeLabo("2015/09/29","2015/09/30",0162,"Medecine", null, adm);
-        
-        
+                
         Resultat res1 = serv.newResultat("2015/10/01", "test positif");
         Resultat res2 = serv.newResultat("2015/10/14", "test negatif");
-        
-      
+              
         acte1.setResultat(res1);
         acte2.setResultat(res2);
         
-        
+        serv.updateActe(acte1);
+        serv.updateActe(acte2);
         
         List<Admission> admi = serv.getAllAdmission();
         assert(!admi.isEmpty());
