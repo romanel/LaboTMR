@@ -64,6 +64,15 @@ public class LaboService {
         return result;
     }  
     
+    public ActeLabo updateActe (ActeLabo acte){
+        EntityManager em = fact.createEntityManager();
+	em.getTransaction( ).begin( );
+        em.merge(acte);
+        em.getTransaction().commit();
+        em.close();
+        return acte;
+    }
+    
     public Admission getAdmissionById(int iep) {
         EntityManager em = fact.createEntityManager();
 	Admission adm = em.find( Admission.class, iep );

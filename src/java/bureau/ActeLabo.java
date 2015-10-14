@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -30,7 +31,11 @@ public class ActeLabo implements Serializable {
     private String date_realisation_acte; 
     private int NABM;
     private String unite_fonctionnel;
+    
+    @OneToOne
     private Resultat resultat;
+        
+    @OneToOne
     private Admission adm; 
 
     

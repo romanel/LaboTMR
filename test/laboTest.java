@@ -4,6 +4,7 @@ import bureau.Admission;
 import bureau.DatabaseUtils;
 import bureau.LaboService;
 import bureau.Resultat;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import org.junit.After;
@@ -60,7 +61,7 @@ public class laboTest {
     public void tearDown() {
         
     }
-    
+    /*
     @Test
     public void admission() {
         clean();
@@ -94,7 +95,7 @@ public class laboTest {
      //   List<Crayon> res = serv.getCrayonsByCouleurId("vert");
      //   assert(!res.isEmpty());
      //   assert(res.size() == 2);
-      */
+      
         List<ActeLabo> res = serv.getAllActeLabo();
         assert(!res.isEmpty());
         assert(res.size() == 1);
@@ -114,11 +115,45 @@ public class laboTest {
      //   List<Crayon> res = serv.getCrayonsByCouleurId("vert");
      //   assert(!res.isEmpty());
      //   assert(res.size() == 2);
-     */
+     
         List<Resultat> res = serv.getAllResultat();
         assert(!res.isEmpty());
         assert(res.size() == 1);
         
+    }
+    */
+    
+    @Test
+    public void testTout(){
+        clean();
+        LaboService serv = new LaboService(DatabaseUtils.fact());
+        
+        Admission adm = serv.newAdmission(1,"Taussac", "Meggan");
+        
+        ActeLabo acte1 = serv.newActeLabo("2015/09/21","2015/09/22",0040,"Obstetrique", null, adm);
+        ActeLabo acte2 = serv.newActeLabo("2015/09/29","2015/09/30",0162,"Medecine", null, adm);
+        
+        
+        Resultat res1 = serv.newResultat("2015/10/01", "test positif");
+        Resultat res2 = serv.newResultat("2015/10/14", "test negatif");
+        
+      
+        acte1.setResultat(res1);
+        acte2.setResultat(res2);
+        
+        
+        
+        List<Admission> admi = serv.getAllAdmission();
+        assert(!admi.isEmpty());
+        assert(admi.size() == 1);
+                
+        List<ActeLabo> act = serv.getAllActeLabo();
+        assert(!act.isEmpty());
+        assert(act.size() == 2);
+        
+        List<Resultat> resu = serv.getAllResultat();
+        assert(!resu.isEmpty());
+        assert(resu.size() == 2);
     }
     
 }
