@@ -73,7 +73,7 @@ public class LaboService {
         return acte;
     }
     
-    public Admission getAdmissionById(int iep) {
+    public Admission getAdmissionById(Long iep) {
         EntityManager em = fact.createEntityManager();
 	Admission adm = em.find( Admission.class, iep );
         em.close();
@@ -87,7 +87,7 @@ public class LaboService {
         return acte;
     }
     
-    public Resultat getCrayonsById(int id) {
+    public Resultat getResultatById(int id) {
         EntityManager em = fact.createEntityManager();
 	Resultat result = em.find( Resultat.class, id );
         em.close();

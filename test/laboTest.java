@@ -129,6 +129,7 @@ public class laboTest {
         LaboService serv = new LaboService(DatabaseUtils.fact());
         
         Admission adm = serv.newAdmission(1,"Taussac", "Meggan");
+        long iep = adm.getIep();
         
         ActeLabo acte1 = serv.newActeLabo("2015/09/21","2015/09/22",0040,"Obstetrique", null, adm);
         ActeLabo acte2 = serv.newActeLabo("2015/09/29","2015/09/30",0162,"Medecine", null, adm);
@@ -144,15 +145,18 @@ public class laboTest {
         
         List<Admission> admi = serv.getAllAdmission();
         assert(!admi.isEmpty());
-        assert(admi.size() == 1);
-                
+        assert(admi.size() == 1);        
+        assert(admi.get(0).getIep() ==iep);
+        
         List<ActeLabo> act = serv.getAllActeLabo();
         assert(!act.isEmpty());
         assert(act.size() == 2);
         
+        
         List<Resultat> resu = serv.getAllResultat();
         assert(!resu.isEmpty());
         assert(resu.size() == 2);
+        
     }
     
 }
