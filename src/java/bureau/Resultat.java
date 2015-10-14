@@ -28,6 +28,7 @@ public class Resultat implements Serializable {
     @Column
     private String date;
     private String resu;
+    private ActeLabo actelabo;
 
     public Long getId() {
         return id;
@@ -52,7 +53,16 @@ public class Resultat implements Serializable {
     public void setResu(String resu) {
         this.resu = resu;
     }
+
+    public ActeLabo getActelabo() {
+        return actelabo;
+    }
+
+    public void setActelabo(ActeLabo actelabo) {
+        this.actelabo = actelabo;
+    }
      
+       
     @Override
     public int hashCode() {
         int hash = 0;
