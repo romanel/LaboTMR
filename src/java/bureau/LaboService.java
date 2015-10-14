@@ -37,13 +37,14 @@ public class LaboService {
         return adm;
     }
     
-    public ActeLabo newActeLabo (String date_dde, String date_real, int nabm, String uf, Resultat res){
+    public ActeLabo newActeLabo (String date_dde, String date_real, int nabm, String uf, Resultat res, Admission adm){
         ActeLabo acte = new ActeLabo();
         acte.setDate_demande_labo(date_dde);
         acte.setDate_realisation_acte(date_real);
         acte.setNABM(nabm);
         acte.setUnite_fonctionnel(uf);
         acte.setResultat(res);
+        acte.setAdmission(adm);
         EntityManager em = fact.createEntityManager();
 	em.getTransaction( ).begin( );
         em.persist(acte);

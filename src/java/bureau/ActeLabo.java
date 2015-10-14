@@ -31,8 +31,7 @@ public class ActeLabo implements Serializable {
     private int NABM;
     private String unite_fonctionnel;
     private Resultat resultat;
-
-    
+    private Admission admission; 
     
     public Resultat getResultat() {
         return resultat;
@@ -82,6 +81,15 @@ public class ActeLabo implements Serializable {
     public void setUnite_fonctionnel(String unite_fonctionnel) {
         this.unite_fonctionnel = unite_fonctionnel;
     }
+
+    public Admission getAdmission() {
+        return admission;
+    }
+
+    public void setAdmission(Admission admission) {
+        this.admission = admission;
+    }
+    
     
 
     @Override
