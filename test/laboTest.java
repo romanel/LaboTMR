@@ -133,6 +133,7 @@ public class laboTest {
         
         ActeLabo acte1 = serv.newActeLabo("2015/09/21","2015/09/22",0040,"Obstetrique", null, adm);
         ActeLabo acte2 = serv.newActeLabo("2015/09/29","2015/09/30",0162,"Medecine", null, adm);
+        ActeLabo acte3 = serv.newActeLabo("2015/09/25","2015/09/29",0162,"Medecine", null, null);
                 
         Resultat res1 = serv.newResultat("2015/10/01", "test positif");
         Resultat res2 = serv.newResultat("2015/10/14", "test negatif");
@@ -150,11 +151,29 @@ public class laboTest {
         
         List<ActeLabo> act = serv.getAllActeLabo();
         assert(!act.isEmpty());
-        assert(act.size() == 2);
+        assert(act.size() == 3);
                 
         List<Resultat> resu = serv.getAllResultat();
         assert(!resu.isEmpty());
         assert(resu.size() == 2);
+        
+        //test acte associé à un résultat
+        for(ActeLabo actel: act){
+            if (actel.getResultat()!= null){
+                System.out.println("l'acte a un résultat associé");
+            }else{
+                System.out.println(actel + " n'a pas de résultat associé!");
+            }
+        }
+        
+        //test acte associé à une admission
+        for(ActeLabo actel: act){
+            if (actel.getAdm()!= null){
+                System.out.println("l'acte a une admission associée");
+            }else{
+                System.out.println(actel + " n'a pas d'admission associée!");
+            }
+        }
         
     }
     
