@@ -58,10 +58,6 @@ public class Admission implements Serializable {
         this.prenom = prenom;
     }
     
-    
-
-    
-    
     public Long getIep() {
         return iep;
     }

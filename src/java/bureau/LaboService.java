@@ -5,6 +5,7 @@
  */
 package bureau;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -17,8 +18,8 @@ import javax.persistence.TypedQuery;
  */
 public class LaboService {
   
-        EntityManagerFactory fact;
-        EntityManager em;
+    EntityManagerFactory fact;
+    EntityManager em;
 
     public LaboService(EntityManagerFactory fact) {
         this.fact = fact;
@@ -80,6 +81,38 @@ public class LaboService {
     public Resultat getResultatById(int id) {
 	Resultat result = em.find( Resultat.class, id );
         return result;
+    }
+    
+    public List<ActeLabo> getActelaboSansResultat(){
+        List<ActeLabo> listeActe = new ArrayList();
+        
+        // Récupère dans une liste res tous les actes labo existants
+        TypedQuery<ActeLabo> query = em.createQuery("SELECT acte FROM ActeLabo acte", ActeLabo.class);
+        List<ActeLabo> res = query.getResultList();
+        
+        // Récupère dans une liste listeActe les actes qui n'ont pas de résultat
+        for (ActeLabo acte : res){
+            if (acte.getResultat() == null){
+                listeActe.add(acte);
+            }
+        }
+        return listeActe;
+    }
+    
+    public List<ActeLabo> getActelaboAvecResultat(){
+        List<ActeLabo> listeActe = new ArrayList();
+        
+        // Récupère dans une liste res tous les actes labo existants
+        TypedQuery<ActeLabo> query = em.createQuery("SELECT acte FROM ActeLabo acte", ActeLabo.class);
+        List<ActeLabo> res = query.getResultList();
+        
+        // Récupère dans une liste listeActe les actes qui ont un résultat
+        for (ActeLabo acte : res){
+            if (acte.getResultat() != null){
+                listeActe.add(acte);
+            }
+        }
+        return listeActe;
     }
     
     public List<Admission> getAllAdmission() {

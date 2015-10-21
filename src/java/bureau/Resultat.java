@@ -53,7 +53,6 @@ public class Resultat implements Serializable {
         this.resu = resu;
     }
 
-     
     @Override
     public int hashCode() {
         int hash = 0;
