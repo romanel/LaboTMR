@@ -115,6 +115,23 @@ public class LaboService {
         return listeActe;
     }
     
+    public List<ActeLabo> getActelaboParService(String UF){
+        List<ActeLabo> listeActe = new ArrayList();
+        
+        // Récupère dans une liste res tous les actes labo existants
+        TypedQuery<ActeLabo> query = em.createQuery("SELECT acte FROM ActeLabo acte", ActeLabo.class);
+        List<ActeLabo> res = query.getResultList();
+        
+        // Récupère dans une liste listeActe les actes qui ont l'UF passé en argument
+        for (ActeLabo acte : res){
+            if(acte.getUnite_fonctionnel()==UF){
+                listeActe.add(acte);
+            }
+        }
+        
+        return listeActe;
+    }
+    
     public List<Admission> getAllAdmission() {
 	TypedQuery<Admission> query = em.createQuery("SELECT adm FROM Admission adm", Admission.class);
         List<Admission> res = query.getResultList();
