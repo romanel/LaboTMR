@@ -144,6 +144,7 @@ public class laboTest {
         serv.updateActe(acte1);
         serv.updateActe(acte2);
         
+        //test création
         List<Admission> admi = serv.getAllAdmission();
         assert(!admi.isEmpty());
         assert(admi.size() == 1);        
@@ -174,6 +175,10 @@ public class laboTest {
                 System.out.println(actel + " n'a pas d'admission associée!");
             }
         }
+        
+        //test liste de résultat
+        System.out.println("les actes suivants ont un résultat : " + serv.getActelaboAvecResultat());
+        System.out.println("les actes suivants n'ont pas de résultat : " + serv.getActelaboSansResultat());
         
     }
     
