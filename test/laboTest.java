@@ -180,6 +180,8 @@ public class laboTest {
         System.out.println("les actes suivants ont un résultat : " + serv.getActelaboAvecResultat());
         System.out.println("les actes suivants n'ont pas de résultat : " + serv.getActelaboSansResultat());
         
+        //test sur les actes / services
+        System.out.println(serv.getActelaboParService("Medecine"));
     }
     
 }
