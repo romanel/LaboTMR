@@ -67,42 +67,42 @@ public class RestServices {
     @GET
     @Path("admission")
     @Produces("application/json")
-    public List<Admission> getAdmissions() {
+    public List<Admission> getAllAdmissions() {
         return serv.getAllAdmission();
     }
     
     @GET
     @Path("actelabo")
     @Produces("application/json")
-    public List<ActeLabo> getActeLabos() {
+    public List<ActeLabo> getAllActeLabos() {
         return serv.getAllActeLabo();
     }
     
     @GET
     @Path("resultat")
     @Produces("application/json")
-    public List<Resultat> getResultats() {
+    public List<Resultat> getAllResultats() {
         return serv.getAllResultat();
     }
     
     @GET
     @Path("admission/{id}")
     @Produces("application/json")
-    public Admission getAdmission(@PathParam("id") long id) {
+    public Admission getAdmissionById(@PathParam("id") long id) {
         return serv.getAdmissionById(id);
     }
     
     @GET
     @Path("actelabo/{id}")
     @Produces("application/json")
-    public ActeLabo getActeLabo(@PathParam("id") int id) {
+    public ActeLabo getActeLaboById(@PathParam("id") int id) {
         return serv.getActeLaboById(id);
     }
     
     @GET
     @Path("resultat/{id}")
     @Produces("application/json")
-    public Resultat getResultat(@PathParam("id") int id) {
+    public Resultat getResultatById(@PathParam("id") int id) {
         return serv.getResultatById(id);
     }
     
@@ -196,21 +196,21 @@ public class RestServices {
     
     @DELETE
     @Path("admission")
-    public Response removeAdmission() {
+    public Response removeAllAdmission() {
         serv.deleteAllAdmission();
         return Response.status(200).build();
     }
     
     @DELETE
     @Path("actelabo")
-    public Response removeActelabo() {
+    public Response removeAllActelabo() {
         serv.deleteAllActeLabo();
         return Response.status(200).build();
     }
     
     @DELETE
     @Path("resultat")
-    public Response removeResultat() {
+    public Response removeAllResultat() {
         serv.deleteAllResultat();
         return Response.status(200).build();
     }
