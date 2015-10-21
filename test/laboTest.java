@@ -23,6 +23,8 @@ import org.junit.Test;
 /**
  *
  * @author mtaussac
+ * @author rleguede
+ * @author talmansa
  */
 public class laboTest {
     

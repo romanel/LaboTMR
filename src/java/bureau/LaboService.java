@@ -15,6 +15,8 @@ import javax.persistence.TypedQuery;
 /**
  *
  * @author mtaussac
+ * @author rleguede
+ * @author talmansa
  */
 public class LaboService {
   

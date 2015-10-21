@@ -18,6 +18,7 @@ import javax.persistence.OneToOne;
  *
  * @author mtaussac
  * @author rleguede
+ * @author talmansa
  */
 @Entity
 public class ActeLabo implements Serializable {

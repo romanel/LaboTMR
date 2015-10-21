@@ -20,6 +20,7 @@ import javax.persistence.OneToMany;
  *
  * @author mtaussac
  * @author rleguede
+ * @author talmansa
  */
 @Entity
 public class Admission implements Serializable {
