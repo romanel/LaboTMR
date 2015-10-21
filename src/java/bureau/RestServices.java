@@ -29,20 +29,20 @@ public class RestServices {
 
     @Context
     private UriInfo context;
-    Services serv;
+    LaboService serv;
    
     /**
      * Creates a new instance of GenericResource
      */
     public RestServices() {
-        serv = new Services(DatabaseUtils.fact());
+        serv = new LaboService(DatabaseUtils.fact());
     }
 
     /**
      * Retrieves representation of an instance of bureau.RestServices
      * @return an instance of java.lang.String
      */
-    
+/*    
     @GET
     @Path("crayons/{id}")
     @Produces("application/json")
@@ -63,7 +63,71 @@ public class RestServices {
     public List<Boite> getBoites() {
         return serv.getAllBoites();
     }
+    */
+    @GET
+    @Path("admission")
+    @Produces("application/json")
+    public List<Admission> getAdmissions() {
+        return serv.getAllAdmission();
+    }
     
+    @GET
+    @Path("actelabo")
+    @Produces("application/json")
+    public List<ActeLabo> getActeLabos() {
+        return serv.getAllActeLabo();
+    }
+    
+    @GET
+    @Path("resultat")
+    @Produces("application/json")
+    public List<Resultat> getResultats() {
+        return serv.getAllResultat();
+    }
+    
+    @GET
+    @Path("admission/{id}")
+    @Produces("application/json")
+    public Admission getAdmission(@PathParam("id") long id) {
+        return serv.getAdmissionById(id);
+    }
+    
+    @GET
+    @Path("actelabo/{id}")
+    @Produces("application/json")
+    public ActeLabo getActeLabo(@PathParam("id") int id) {
+        return serv.getActeLaboById(id);
+    }
+    
+    @GET
+    @Path("resultat/{id}")
+    @Produces("application/json")
+    public Resultat getResultat(@PathParam("id") int id) {
+        return serv.getResultatById(id);
+    }
+    
+    @GET
+    @Path("actelabo/sansresultat")
+    @Produces("application/json")
+    public List<ActeLabo> getActeLabosSansResultat() {
+        return serv.getActelaboSansResultat();
+    }
+    
+    @GET
+    @Path("actelabo/avecresultat")
+    @Produces("application/json")
+    public List<ActeLabo> getActeLabosAvecResultat() {
+        return serv.getActelaboAvecResultat();
+    }
+    
+    @GET
+    @Path("actelabo/parservice")
+    @Produces("application/json")
+    public List<ActeLabo> getActeLabosParService(String service) {
+        return serv.getActelaboParService(service);
+    }
+    
+   /* 
     @POST
     @Path("crayons")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -80,18 +144,96 @@ public class RestServices {
     public Response editCrayon(Crayon cr) {
         serv.editCrayon(cr);
         return Response.status(200).entity(cr).build();
+    }*/
+    
+    @POST
+    @Path("admission")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces("application/json")
+    public Admission newAdmission(Admission adm) {
+        serv.newAdmission(adm.getIpp(),adm.getNom(),adm.getPrenom());
+        System.out.println("id:"+adm.getIep());
+        return adm;
     }
     
+    @POST
+    @Path("actelabo")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces("application/json")
+    public ActeLabo newActeLabo(ActeLabo acte) {
+        serv.newActeLabo(acte.getDate_demande_labo(),acte.getDate_realisation_acte(),acte.getNABM(),acte.getUnite_fonctionnel(),
+                acte.getResultat(), acte.getAdm());
+        System.out.println("id:"+acte.getId());
+        return acte;
+    }
+    
+    @POST
+    @Path("resultat")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces("application/json")
+    public Resultat newResultat(Resultat resu) {
+        serv.newResultat(resu.getDate(),resu.getResu());
+        System.out.println("id:"+resu.getId());
+        return resu;
+    }
+    
+    @POST
+    @Path("actelabo/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response editActelabo(ActeLabo acte) {
+        serv.updateActe(acte);
+        return Response.status(200).entity(acte).build();
+    }
+  
+    /*
     @DELETE
     @Path("crayons/{id}")
     public Response removeCrayon(@PathParam("id") int id) {
         serv.removeCrayon(id);
         return Response.status(200).build();
     }
-
-    @GET
-    @Path("admission")
-    @Produces("application/json")
+*/
     
+    @DELETE
+    @Path("admission")
+    public Response removeAdmission() {
+        serv.deleteAllAdmission();
+        return Response.status(200).build();
+    }
+    
+    @DELETE
+    @Path("actelabo")
+    public Response removeActelabo() {
+        serv.deleteAllActeLabo();
+        return Response.status(200).build();
+    }
+    
+    @DELETE
+    @Path("resultat")
+    public Response removeResultat() {
+        serv.deleteAllResultat();
+        return Response.status(200).build();
+    }
+    
+    @DELETE
+    @Path("admission/{id}")
+    public Response removeAdmissionByID(@PathParam("id") long id) {
+        serv.deleteAdmissionById(id);
+        return Response.status(200).build();
+    }
+    
+    @DELETE
+    @Path("actelabo/{id}")
+    public Response removeActelaboByID(@PathParam("id") int id) {
+        serv.deleteActelaboById(id);
+        return Response.status(200).build();
+    }
+    
+    @DELETE
+    @Path("resultat/{id}")
+    public Response removeResultatByID(@PathParam("id") int id) {
+        serv.deleteResultatById(id);
+        return Response.status(200).build();
+    }
     
 }

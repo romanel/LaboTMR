@@ -63,7 +63,7 @@ public class LaboService {
         return result;
     }  
     
-    public ActeLabo updateActe (ActeLabo acte){
+    public ActeLabo updateActe(ActeLabo acte){
 	em.getTransaction( ).begin( );
         em.persist(acte);
         em.getTransaction().commit();
@@ -167,6 +167,24 @@ public class LaboService {
     public void deleteAllResultat() {
         em.getTransaction( ).begin( );
         em.createQuery("DELETE FROM Resultat").executeUpdate();
+        em.getTransaction().commit();
+    }
+    
+    public void deleteAdmissionById(Long id) {
+        em.getTransaction( ).begin( );
+        em.createQuery("DELETE FROM Admission WHERE iep ="+id).executeUpdate();
+        em.getTransaction().commit();
+    }
+    
+    public void deleteActelaboById(int id) {
+        em.getTransaction( ).begin( );
+        em.createQuery("DELETE FROM Actelabo WHERE iep ="+id).executeUpdate();
+        em.getTransaction().commit();
+    }
+    
+    public void deleteResultatById(int id) {
+        em.getTransaction( ).begin( );
+        em.createQuery("DELETE FROM Resultat WHERE iep ="+id).executeUpdate();
         em.getTransaction().commit();
     }
 }
