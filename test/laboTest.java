@@ -151,8 +151,7 @@ public class laboTest {
         List<ActeLabo> act = serv.getAllActeLabo();
         assert(!act.isEmpty());
         assert(act.size() == 2);
-        
-        
+                
         List<Resultat> resu = serv.getAllResultat();
         assert(!resu.isEmpty());
         assert(resu.size() == 2);

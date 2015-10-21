@@ -18,9 +18,11 @@ import javax.persistence.TypedQuery;
 public class LaboService {
   
         EntityManagerFactory fact;
+        EntityManager em;
 
     public LaboService(EntityManagerFactory fact) {
         this.fact = fact;
+        this.em = fact.createEntityManager();
     }
     
     public Admission newAdmission (int ipp, String nom, String prenom){
@@ -28,11 +30,9 @@ public class LaboService {
         adm.setIpp(ipp);
         adm.setNom(nom);
         adm.setPrenom(prenom);
-        EntityManager em = fact.createEntityManager();
 	em.getTransaction( ).begin( );
         em.persist(adm);
         em.getTransaction().commit();
-        em.close();
         return adm;
     }
     
@@ -44,11 +44,9 @@ public class LaboService {
         acte.setUnite_fonctionnel(uf);
         acte.setAdm(adm);
         acte.setResultat(res);
-        EntityManager em = fact.createEntityManager();
 	em.getTransaction( ).begin( );
         em.persist(acte);
         em.getTransaction().commit();
-        em.close();
         return acte;
     }
         
@@ -56,89 +54,67 @@ public class LaboService {
         Resultat result = new Resultat();
         result.setDate(date);
         result.setResu(resu);
-        EntityManager em = fact.createEntityManager();
 	em.getTransaction( ).begin( );
         em.persist(result);
         em.getTransaction().commit();
-        em.close();
         return result;
     }  
     
     public ActeLabo updateActe (ActeLabo acte){
-        EntityManager em = fact.createEntityManager();
 	em.getTransaction( ).begin( );
-        em.merge(acte);
+        em.persist(acte);
         em.getTransaction().commit();
-        em.close();
         return acte;
     }
     
     public Admission getAdmissionById(Long iep) {
-        EntityManager em = fact.createEntityManager();
 	Admission adm = em.find( Admission.class, iep );
-        em.close();
         return adm;
     }
     
     public ActeLabo getActeLaboById(int id) {
-        EntityManager em = fact.createEntityManager();
 	ActeLabo acte = em.find( ActeLabo.class, id );
-        em.close();
         return acte;
     }
     
     public Resultat getResultatById(int id) {
-        EntityManager em = fact.createEntityManager();
 	Resultat result = em.find( Resultat.class, id );
-        em.close();
         return result;
     }
     
     public List<Admission> getAllAdmission() {
-        EntityManager em = fact.createEntityManager();
 	TypedQuery<Admission> query = em.createQuery("SELECT adm FROM Admission adm", Admission.class);
         List<Admission> res = query.getResultList();
-        em.close();
         return res;
     }
     
     public List<ActeLabo> getAllActeLabo() {
-        EntityManager em = fact.createEntityManager();
 	TypedQuery<ActeLabo> query = em.createQuery("SELECT acte FROM ActeLabo acte", ActeLabo.class);
         List<ActeLabo> res = query.getResultList();
-        em.close();
         return res;
     }
     
     public List<Resultat> getAllResultat() {
-        EntityManager em = fact.createEntityManager();
 	TypedQuery<Resultat> query = em.createQuery("SELECT result FROM Resultat result", Resultat.class);
         List<Resultat> res = query.getResultList();
-        em.close();
         return res;
     }
     
     public void deleteAllAdmission() {
-        EntityManager em = fact.createEntityManager();
         em.getTransaction( ).begin( );
         em.createQuery("DELETE FROM Admission").executeUpdate();
         em.getTransaction().commit();
-        em.close();
     }
     
     public void deleteAllActeLabo() {
-        EntityManager em = fact.createEntityManager();
         em.getTransaction( ).begin( );
         em.createQuery("DELETE FROM ActeLabo").executeUpdate();
         em.getTransaction().commit();
-        em.close();
     }
     
     public void deleteAllResultat() {
-        EntityManager em = fact.createEntityManager();
         em.getTransaction( ).begin( );
         em.createQuery("DELETE FROM Resultat").executeUpdate();
         em.getTransaction().commit();
-        em.close();
     }
 }
