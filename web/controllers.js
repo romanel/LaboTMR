@@ -8,13 +8,13 @@
 function bureauRouteConfig($routeProvider) {
     $routeProvider
      .when('/', {
-        controller: CrayonsController,
-        templateUrl: 'listeCrayon.html'    
+        controller: demandeActeController,
+        templateUrl: 'demandeActe.html'    
     })
     .otherwise({ redirectTo: '/'});
 }
 
-bureauServices.config(bureauRouteConfig);
+angular.module('bureau').config(bureauRouteConfig);
 
 
 
@@ -23,3 +23,7 @@ function CrayonsController($scope, Crayons) {
    // -> ligne pour obtenir le crayon d'identifiant 19 :  console.dir(Crayons.get({id:19}));
 }
 
+function demandeActeController($scope, ActeLabo) {
+   $scope.actelabo = ActeLabo.query();
+   // -> ligne pour obtenir le crayon d'identifiant 19 :  console.dir(Crayons.get({id:19}));
+}

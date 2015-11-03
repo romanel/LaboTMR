@@ -5,5 +5,5 @@
  */
 
 
-
+//déclaration du module
 var bureauServices = angular.module('bureau', ['ngRoute','ngResource']);
