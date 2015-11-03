@@ -85,6 +85,14 @@ public class RestServices {
         return serv.getAllResultat();
     }
     
+       
+    /*@GET
+    @Path("uf")
+    @Produces("application/json")
+    public List<String> getAlluf() {
+        return serv.getAlluf();
+    }*/
+    
     @GET
     @Path("admission/{id}")
     @Produces("application/json")
@@ -112,7 +120,7 @@ public class RestServices {
     public List<ActeLabo> getActeLabosSansResultat() {
         return serv.getActelaboSansResultat();
     }
-    
+     
     @GET
     @Path("actelabo/avecresultat")
     @Produces("application/json")

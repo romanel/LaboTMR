@@ -140,6 +140,13 @@ public class LaboService {
         return res;
     }
     
+    /*public  List<String> getAlluf() {        
+        String[] res = { "sflkjdflk", "slkdklsfjkl", "lmdflmskg" };
+        ArrayList <String> unitf =(ArrayList <String>) em.createQuery("SELECT nom_uf FROM unite_fonctionnelle", String.class);
+        return unitf;
+    }*/
+    
+    
     public List<ActeLabo> getAllActeLabo() {
 	TypedQuery<ActeLabo> query = em.createQuery("SELECT acte FROM ActeLabo acte", ActeLabo.class);
         List<ActeLabo> res = query.getResultList();

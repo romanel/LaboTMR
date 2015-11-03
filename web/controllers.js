@@ -4,31 +4,6 @@
  * and open the template in the editor.
  */
 
-
-function bureauRouteConfig($routeProvider) {
-    $routeProvider
-     .when('/', {
-        controller: demandeActeController,
-        templateUrl: 'demandeActe.html'    
-    })
-    .otherwise({ redirectTo: '/'});
-}
-
-angular.module('bureau').config(bureauRouteConfig);
-
-
-
-function CrayonsController($scope, Crayons) {
-   $scope.crayons = Crayons.query();
-   // -> ligne pour obtenir le crayon d'identifiant 19 :  console.dir(Crayons.get({id:19}));
-}
-
-function demandeActeController($scope, ActeLabo) {
-   $scope.actelabo = ActeLabo.query();
-   // -> ligne pour obtenir le crayon d'identifiant 19 :  console.dir(Crayons.get({id:19}));
-}
-
-
 // Code Nicolas Singer 
 
 angular.module('monApp').controller('CrayonsController', [ 'Crayons',
@@ -63,4 +38,13 @@ function($routeParams, Crayons, $location) {
         $location.path("/")
     };
 }
+])
+
+.controller('ActeNewControlleur', ['ActeLabo',
+    function (ActeLabo){
+        this.actel = new ActeLabo();
+        this.update = function() {
+            this.actel.$save();
+        };
+    }
 ]);

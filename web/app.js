@@ -15,8 +15,8 @@ angular.module('monApp', ['ngRoute','ngResource']);
 angular.module('monApp').config(['$routeProvider', function routeConfig($routeProvider) {
     $routeProvider
      .when('/', {
-        controller: "CrayonsController as ctrl",
-        templateUrl: 'listeCrayon.html'    
+        controller: "ActeNewControlleur as ctrl",
+        templateUrl: 'demandeActe.html'    
     })
      .when('/crayon/edit/:id', {
         controller: "CrayonEditController as ctrl",
