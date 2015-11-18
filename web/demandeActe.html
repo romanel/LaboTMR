@@ -6,12 +6,41 @@ and open the template in the editor.
 -->
 <h1>Demande d'un acte de laboratoire</h1>
 <form>
-    <select name="uf">
-        <option value="Medecine">Medecine</option>
-        <option value="Obstetrique">Obstetrique</option>
-        <option value="Chirurgie">Chirurgie</option>
-        <option value="Pediatrie">Pediatrie</option>
-        <option value="Psychiatrie">Psychiatrie</option>
-        <option value="Nephrologie">Nephrologie</option>
-    </select>
+    <!liste des uf>
+    <p>
+        <label>Choisir votre UF : </label>
+        <select name="uf" ng-model="ctrl.actel.unite_fonctionnel">
+            <option value="Medecine">Medecine</option>
+            <option value="Obstetrique">Obstetrique</option>
+            <option value="Chirurgie">Chirurgie</option>
+            <option value="Pediatrie">Pediatrie</option>
+            <option value="Psychiatrie">Psychiatrie</option>
+            <option value="Nephrologie">Nephrologie</option>
+        </select>
+    </p>
+    <!liste des NABM>
+    <p>
+        <label>Choisir votre type d'acte : </label>
+        <select name="nabm" ng-model="ctrl.actel.NABM">
+            <option value="0040">Caryotype constitutionnel prénatal avec incubation</option>
+            <option value="0162">Anticorps antiplaquettaires : dépistage</option>
+            <option value="0183">Correction du temps de thrombine</option>
+            <option value="0269">Antibiogramme bactérie aérobie</option>
+            <option value="0524">Lipacémie (sang)</option>
+            <option value="0624">UR. : calcium (calciurie)</option>
+        </select>
+    </p>
+    <!calendrier pour la date>
+    <p>
+        <label>Choisir la date de réalisation : (DD/MM/YYYY)</label>
+        <input type="text" ng-model="ctrl.actel.date_demande_labo"/>
+    </p>
+    <!le nom du patient>
+    <p>
+        <label>Choisir le patient concerné : </label>
+        <select name="iep" ng-model="ctrl.actel.adm.iep">
+            <option ng-repeat='adm in ctrl.admissions'>{{adm.iep}}</option>             
+        </select>
+    </p>
+    <input type="submit" value="Enregistrer"  ng-click="ctrl.update()"/>
 </form>

@@ -35,16 +35,29 @@ function($routeParams, Crayons, $location) {
     this.update = function() {
         // appel POST asynchrone au service web sur /crayons/{id} 
         this.cr.$save();
-        $location.path("/")
+        $location.path("/");
     };
 }
 ])
 
-.controller('ActeNewControlleur', ['ActeLabo',
-    function (ActeLabo){
+.controller('ActeNewControlleur', ['ActeLabo','Admissions',
+    function (ActeLabo, Admissions){        
+        var self = this;        
+        this.admissions = Admissions.query();        
         this.actel = new ActeLabo();
         this.update = function() {
-            this.actel.$save();
+            console.log("lklkl");
+            self.actel.$save();
         };
     }
 ]);
+//.controller('AdmissionGetAllControlleur', ['$routeParams', 'Admission', '$location',
+//    function ($routeParams, Admission, $location){
+//        this.adm = Admission.get({iep: $routeParams.iep});
+//        this.update = function() {
+//            // appel POST asynchrone au service web sur /crayons/{id} 
+//            this.adm.$save();
+//            $location.path("/");
+//        };
+//    }
+//]);

@@ -71,6 +71,7 @@ public class RestServices {
         return serv.getAllAdmission();
     }
     
+    
     @GET
     @Path("actelabo")
     @Produces("application/json")

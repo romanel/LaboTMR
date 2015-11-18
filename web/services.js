@@ -12,3 +12,10 @@ angular.module('monApp').factory('ActeLabo', ['$resource', function($resource) {
     return $resource('/LaboTMR/webresources/generic/actelabo/:id', { id : '@id'} );
     
 }]);
+
+angular.module('monApp').factory('Admissions', ['$resource', function($resource) {
+        
+    //  voir https://docs.angularjs.org/api/ngResource/service/$resource pour la doc de cet objet
+    return $resource('/LaboTMR/webresources/generic/admission/:id', { id : '@iep'} );
+    
+}]);
