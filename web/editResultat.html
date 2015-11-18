@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<h1>Créer le résultat</h1>
+    <table>       
+        <tr>
+            <th>Acte</th>
+            <th>NABM</th>
+            <th>IEP</th>
+        </tr>
+        <tr>
+            <td ng-model="ctrl.actel.date_demande_labo">{{actel.id.date_demande_labo}}</td>
+            <td ng-model="ctrl.actel.id">{{actel.id}}</td>
+            <td ng-model="ctrl.actel.NABM">{{actel.NABM}}</td>
+            <td ng-model="ctrl.actel.iep">{{actel.iep}}</td>
+        </tr>
+    </table>
+<form>
+    <!date de réalisation>
+    <p>
+        <label>Choisir la date de réalisation : (YYYY/MM/DD)</label>
+        <input type="text" ng-model="ctrl.res.date"/>
+    </p>
+
+    <!résultat>
+    <p>
+        <label>Indiquer le résultat de l'acte : </label>
+        <input type="text" ng-model="ctrl.res.resu"/>
+    </p>
+   
+    <input type="submit" value="Enregistrer" ng-click="ctrl.update()"/>
+    <a href="#/listeDemande"> Retour à la liste des actes</a>
+</form>

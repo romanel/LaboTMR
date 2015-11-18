@@ -18,6 +18,14 @@ angular.module('monApp').config(['$routeProvider', function routeConfig($routePr
         controller: "ActeNewControlleur as ctrl",
         templateUrl: 'demandeActe.html'    
     })
+     .when('/listeDemande', {
+        controller: "ListeDemandeControlleur as ctrl",
+        templateUrl: 'listeDemande.html'    
+    })
+    .when('/editResultat/:id', {
+    controller: "ResultatNewControlleur as ctrl",
+    templateUrl: 'editResultat.html'    
+    })
      .when('/crayon/edit/:id', {
         controller: "CrayonEditController as ctrl",
         templateUrl: 'editCrayon.html'    
@@ -26,5 +34,5 @@ angular.module('monApp').config(['$routeProvider', function routeConfig($routePr
         controller: "CrayonNewController as ctrl",
         templateUrl: 'newCrayon.html'    
     })
-    .otherwise({ redirectTo: '/'});
+    //.otherwise({ redirectTo: '/'});
 }]);

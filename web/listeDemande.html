@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<h1>Liste des demandes d'actes </h1>
+<form>
+    <!liste des actes sans résultats>
+        <table>       
+            <tr>
+                <th>Date demande</th>
+                <th>Acte</th>
+                <th>NABM</th>
+                <th>IEP</th>
+            </tr>
+            <tr ng-repeat='actel in ctrl.actel'>
+                <td ng-model="ctrl.actel.date_demande_labo">{{actel.date_demande_labo}}</td>
+                <td ng-model="ctrl.actel.id">{{actel.id}}</td>
+                <td ng-model="ctrl.actel.NABM">{{actel.NABM}}</td>
+                <td ng-model="ctrl.actel.adm.iep">{{actel.adm.iep}}</td>
+                <td><a href="#/editResultat/{{actel.id}}"> Créer Resultat</a></td>
+            </tr>
+        </table>
+    
+</form>

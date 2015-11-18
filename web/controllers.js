@@ -46,18 +46,43 @@ function($routeParams, Crayons, $location) {
         this.admissions = Admissions.query();        
         this.actel = new ActeLabo();
         this.update = function() {
-            console.log("lklkl");
+            //console.log("lklkl");
             self.actel.$save();
         };
     }
+])
+
+.controller('ListeDemandeControlleur', [ 'ActeLabo', 'ActeLaboSansRes',
+    function(ActeLabo, ActeLaboSansRes) {  
+       //console.log("zorzeio");
+        var self = this;        
+       // this.actel = ActeLabo.query(); 
+       ActeLaboSansRes.get().then(function(res) {
+           //console.log("coucou");
+           self.actel = res.data;
+       });       
+       self.submit = function() {
+             $location.path("/editResultat");
+       }     
+    }
+])
+
+.controller('ResultatNewControlleur', [ '$routeParams', 'Resultat', 'ActeLabo', '$location',
+    function($routeParams, Resultat, ActeLabo, $location) {        
+        var self = this;
+        this.actel = ActeLabo.get({id: $routeParams.id});
+        this.res = new Resultat();
+        this.update = function(actel) {
+            console.log("coucou4");
+            self.res.$save();
+            console.log("coucou5");
+            this.actel.$save();
+            $location.path("/");
+            console.log("coucou6");
+        };
+        self.submit = function() {
+             $location.path("/listeDemande");
+       }
+}
 ]);
-//.controller('AdmissionGetAllControlleur', ['$routeParams', 'Admission', '$location',
-//    function ($routeParams, Admission, $location){
-//        this.adm = Admission.get({iep: $routeParams.iep});
-//        this.update = function() {
-//            // appel POST asynchrone au service web sur /crayons/{id} 
-//            this.adm.$save();
-//            $location.path("/");
-//        };
-//    }
-//]);
+
