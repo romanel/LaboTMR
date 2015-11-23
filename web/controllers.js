@@ -54,7 +54,6 @@ angular.module('monApp').controller('CrayonsController', ['Crayons',
 
         .controller('ListeDemandeControlleur', ['ActeLabo', 'ActeLaboSansRes',
             function (ActeLabo, ActeLaboSansRes) {
-                //console.log("zorzeio");
                 var self = this;
                 // this.actel = ActeLabo.query(); 
                 ActeLaboSansRes.get().then(function (res) {
@@ -67,20 +66,52 @@ angular.module('monApp').controller('CrayonsController', ['Crayons',
             }
         ])
 
+        .controller('AfficherActeControlleur', ['$routeParams', 'ActeLabo', 'Resultat',
+            function ($routeParams, ActeLabo, Resultat) {
+                var self = this;
+                this.actel = ActeLabo.get({id: $routeParams.id});
+                //this.adm = Admission.query();
+                //this.res = Resultat.query();
+            }
+        ])
+
+        .controller('ListActeLaboControlleur', ['ActeLabo',
+            function (ActeLabo) {
+                //console.log("coucou1");
+                var self = this;
+                //console.log("coucou2");
+                this.actel = ActeLabo.query();
+                //console.log("coucou3");
+                self.afficher = function () {
+                    $location.path("/afficherActe");
+                }
+                self.modifier = function () {
+                    $location.path("/editActe");
+                }
+                this.delete = function (actel) {
+                    // appel DELETE asynchrone au service web sur /crayons/{id}
+                    //cr.$delete();
+                    ActeLabo.delete(actel);
+                    // remet à jour le tableau des crayons en suprimant l'élément effacé
+                    self.actel.splice(this.actel.indexOf(actel), 1);
+                };
+            }
+        ])
+
         .controller('ResultatNewControlleur', ['$routeParams', 'Resultat', 'ActeLabo', '$location',
             function ($routeParams, Resultat, ActeLabo, $location) {
                 var self = this;
                 this.actel = ActeLabo.get({id: $routeParams.id});
                 this.res = new Resultat();
                 this.update = function () {
-                    console.log("coucou4");
+                    //console.log("coucou4");
                     self.res.$save(function (u, putResponseHeaders) {
                         console.dir(u);
                         self.actel.resultat = u;
                         console.log(angular.toJson(self.actel));
                         self.actel.$save();
                         $location.path("/");
-                        console.log("coucou6");
+                        //console.log("coucou6");
 
                     });
 

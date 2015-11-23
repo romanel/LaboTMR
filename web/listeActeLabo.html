@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<h1>Liste des actes </h1>
+
+    <table>       
+            <tr>
+                <th>Acte</th>
+                <th>NABM</th>
+                <th>IEP</th>
+            </tr>
+            <tr ng-repeat='actel in ctrl.actel'>
+                <td ng-model="ctrl.actel.id">{{actel.id}}</td>
+                <td ng-model="ctrl.actel.NABM">{{actel.NABM}}</td>
+                <td ng-model="ctrl.actel.adm.iep">{{actel.adm.iep}}</td>
+                <td><a href="#/afficherActe/{{actel.id}}">Afficher Acte</a></td>                
+                <td><a href="#/editActe/{{actel.id}}">Modifier Acte</a></td>
+                <td> <input type="button" value="Delete" ng-click="ctrl.delete(actel)"/> 
+            </tr>
+    </table>

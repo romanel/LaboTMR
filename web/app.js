@@ -6,33 +6,44 @@
 
 
 //déclaration du module
- // var bureauServices = angular.module('bureau', ['ngRoute','ngResource']);
+// var bureauServices = angular.module('bureau', ['ngRoute','ngResource']);
 
 
 
-angular.module('monApp', ['ngRoute','ngResource']);
+angular.module('monApp', ['ngRoute', 'ngResource']);
 
 angular.module('monApp').config(['$routeProvider', function routeConfig($routeProvider) {
-    $routeProvider
-     .when('/', {
-        controller: "ActeNewControlleur as ctrl",
-        templateUrl: 'demandeActe.html'    
-    })
-     .when('/listeDemande', {
-        controller: "ListeDemandeControlleur as ctrl",
-        templateUrl: 'listeDemande.html'    
-    })
-    .when('/editResultat/:id', {
-    controller: "ResultatNewControlleur as ctrl",
-    templateUrl: 'editResultat.html'    
-    })
-     .when('/crayon/edit/:id', {
-        controller: "CrayonEditController as ctrl",
-        templateUrl: 'editCrayon.html'    
-    })
-     .when('/crayon/new', {
-        controller: "CrayonNewController as ctrl",
-        templateUrl: 'newCrayon.html'    
-    })
-    //.otherwise({ redirectTo: '/'});
-}]);
+        $routeProvider
+                .when('/', {
+                    controller: "ActeNewControlleur as ctrl",
+                    templateUrl: 'demandeActe.html'
+                })
+                .when('/accueil', {
+                    templateUrl: 'accueil.html'
+                })
+                .when('/listeActeLabo', {
+                    controller: "ListActeLaboControlleur as ctrl",
+                    templateUrl: 'listeActeLabo.html'
+                })
+                .when('/listeDemande', {
+                    controller: "ListeDemandeControlleur as ctrl",
+                    templateUrl: 'listeDemande.html'
+                })
+                .when('/editResultat/:id', {
+                    controller: "ResultatNewControlleur as ctrl",
+                    templateUrl: 'editResultat.html'
+                })
+                .when('/afficherActe/:id', {
+                    controller: "AfficherActeControlleur as ctrl",
+                    templateUrl: 'afficherActe.html'
+                })
+                .when('/crayon/edit/:id', {
+                    controller: "CrayonEditController as ctrl",
+                    templateUrl: 'editCrayon.html'
+                })
+                .when('/crayon/new', {
+                    controller: "CrayonNewController as ctrl",
+                    templateUrl: 'newCrayon.html'
+                })
+        //.otherwise({ redirectTo: '/'});
+    }]);
