@@ -52,6 +52,13 @@ public class LaboService {
         em.getTransaction().commit();
         return acte;
     }
+    
+      public void newResultat2 (Resultat res){
+      
+	em.getTransaction( ).begin( );
+        em.persist(res);
+        em.getTransaction().commit();
+    }  
         
     public Resultat newResultat (String date, String resu){
         Resultat result = new Resultat();
@@ -65,7 +72,7 @@ public class LaboService {
     
     public ActeLabo updateActe(ActeLabo acte){
 	em.getTransaction( ).begin( );
-        em.persist(acte);
+        em.merge(acte);
         em.getTransaction().commit();
         return acte;
     }
@@ -75,12 +82,12 @@ public class LaboService {
         return adm;
     }
     
-    public ActeLabo getActeLaboById(int id) {
+    public ActeLabo getActeLaboById(Long id) {
 	ActeLabo acte = em.find( ActeLabo.class, id );
         return acte;
     }
     
-    public Resultat getResultatById(int id) {
+    public Resultat getResultatById(Long id) {
 	Resultat result = em.find( Resultat.class, id );
         return result;
     }

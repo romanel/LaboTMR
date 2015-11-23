@@ -104,14 +104,14 @@ public class RestServices {
     @GET
     @Path("actelabo/{id}")
     @Produces("application/json")
-    public ActeLabo getActeLaboById(@PathParam("id") int id) {
+    public ActeLabo getActeLaboById(@PathParam("id") Long id) {
         return serv.getActeLaboById(id);
     }
     
     @GET
     @Path("resultat/{id}")
     @Produces("application/json")
-    public Resultat getResultatById(@PathParam("id") int id) {
+    public Resultat getResultatById(@PathParam("id") Long id) {
         return serv.getResultatById(id);
     }
     
@@ -172,7 +172,6 @@ public class RestServices {
     public ActeLabo newActeLabo(ActeLabo acte) {
         serv.newActeLabo(acte.getDate_demande_labo(),acte.getDate_realisation_acte(),acte.getNABM(),acte.getUnite_fonctionnel(),
                 acte.getResultat(), acte.getAdm());
-        System.out.println("id:"+acte.getId());
         return acte;
     }
     
@@ -181,8 +180,8 @@ public class RestServices {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
     public Resultat newResultat(Resultat resu) {
-        serv.newResultat(resu.getDate(),resu.getResu());
-        System.out.println("id:"+resu.getId());
+        serv.newResultat2(resu);
+        System.out.println("idres:"+resu.getId());
         return resu;
     }
     
@@ -190,6 +189,7 @@ public class RestServices {
     @Path("actelabo/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response editActelabo(ActeLabo acte) {
+        System.out.println("idacte:"+acte.getId());
         serv.updateActe(acte);
         return Response.status(200).entity(acte).build();
     }
