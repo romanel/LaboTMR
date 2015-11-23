@@ -95,8 +95,8 @@ angular.module('monApp')
                 //MARCHE PAS POUR L'INSTANT
                 this.delete = function (actel) {
                     // appel DELETE asynchrone au service web sur /crayons/{id}
-                    actel.$delete();
-                    //ActeLabo.delete(actel);
+                    //actel.$delete();
+                    ActeLabo.delete(actel);
                     // remet à jour le tableau des crayons en suprimant l'élément effacé
                     self.actel.splice(self.actel.indexOf(actel), 1);
                 };

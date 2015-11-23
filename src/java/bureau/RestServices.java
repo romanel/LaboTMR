@@ -97,7 +97,7 @@ public class RestServices {
     @GET
     @Path("admission/{id}")
     @Produces("application/json")
-    public Admission getAdmissionById(@PathParam("id") long id) {
+    public Admission getAdmissionById(@PathParam("id") Long id) {
         return serv.getAdmissionById(id);
     }
     
@@ -226,21 +226,21 @@ public class RestServices {
     
     @DELETE
     @Path("admission/{id}")
-    public Response removeAdmissionByID(@PathParam("id") long id) {
+    public Response removeAdmissionByID(@PathParam("id") Long id) {
         serv.deleteAdmissionById(id);
         return Response.status(200).build();
     }
     
     @DELETE
     @Path("actelabo/{id}")
-    public Response removeActelaboByID(@PathParam("id") int id) {
+    public Response removeActelaboByID(@PathParam("id") Long id) {
         serv.deleteActelaboById(id);
         return Response.status(200).build();
     }
     
     @DELETE
     @Path("resultat/{id}")
-    public Response removeResultatByID(@PathParam("id") int id) {
+    public Response removeResultatByID(@PathParam("id") Long id) {
         serv.deleteResultatById(id);
         return Response.status(200).build();
     }

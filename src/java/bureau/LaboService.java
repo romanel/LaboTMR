@@ -190,15 +190,15 @@ public class LaboService {
         em.getTransaction().commit();
     }
     
-    public void deleteActelaboById(int id) {
+    public void deleteActelaboById(Long id) {
         em.getTransaction( ).begin( );
-        em.createQuery("DELETE FROM Actelabo WHERE iep ="+id).executeUpdate();
+        em.createQuery("DELETE acte FROM Actelabo WHERE id ="+id).executeUpdate();
         em.getTransaction().commit();
     }
     
-    public void deleteResultatById(int id) {
+    public void deleteResultatById(Long id) {
         em.getTransaction( ).begin( );
-        em.createQuery("DELETE FROM Resultat WHERE iep ="+id).executeUpdate();
+        em.createQuery("DELETE FROM Resultat WHERE id ="+id).executeUpdate();
         em.getTransaction().commit();
     }
 }
