@@ -6,39 +6,40 @@
 
 // Code Nicolas Singer 
 
-angular.module('monApp').controller('CrayonsController', ['Crayons',
-    function (Crayons) {
-        this.crayons = Crayons.query();
-        this.delete = function (cr) {
-            // appel DELETE asynchrone au service web sur /crayons/{id}
-            //cr.$delete();
-            Crayons.delete(cr);
-            // remet à jour le tableau des crayons en suprimant l'élément effacé
-            this.crayons.splice(this.crayons.indexOf(cr), 1);
-        };
-    }
-])
+angular.module('monApp')
+//        .controller('CrayonsController', ['Crayons',
+//            function (Crayons) {
+//                this.crayons = Crayons.query();
+//                this.delete = function (cr) {
+//                    // appel DELETE asynchrone au service web sur /crayons/{id}
+//                    //cr.$delete();
+//                    Crayons.delete(cr);
+//                    // remet à jour le tableau des crayons en suprimant l'élément effacé
+//                    this.crayons.splice(this.crayons.indexOf(cr), 1);
+//                };
+//            }
+//        ])
 
-        .controller('CrayonNewController', ['Crayons',
-            function (Crayons) {
-                this.cr = new Crayons();
-                this.update = function () {
-                    // appel POST asynchrone au service web sur /crayons
-                    this.cr.$save();
-                };
-            }])
+//        .controller('CrayonNewController', ['Crayons',
+//            function (Crayons) {
+//                this.cr = new Crayons();
+//                this.update = function () {
+//                    // appel POST asynchrone au service web sur /crayons
+//                    this.cr.$save();
+//                };
+//            }])
 
 
-        .controller('CrayonEditController', ['$routeParams', 'Crayons', '$location',
-            function ($routeParams, Crayons, $location) {
-                this.cr = Crayons.get({id: $routeParams.id});
-                this.update = function () {
-                    // appel POST asynchrone au service web sur /crayons/{id} 
-                    this.cr.$save();
-                    $location.path("/");
-                };
-            }
-        ])
+//        .controller('CrayonEditController', ['$routeParams', 'Crayons', '$location',
+//            function ($routeParams, Crayons, $location) {
+//                this.cr = Crayons.get({id: $routeParams.id});
+//                this.update = function () {
+//                    // appel POST asynchrone au service web sur /crayons/{id} 
+//                    this.cr.$save();
+//                    $location.path("/");
+//                };
+//            }
+//        ])
 
         .controller('ActeNewControlleur', ['ActeLabo', 'Admissions',
             function (ActeLabo, Admissions) {
@@ -75,12 +76,15 @@ angular.module('monApp').controller('CrayonsController', ['Crayons',
             }
         ])
 
-        .controller('ListActeLaboControlleur', ['ActeLabo',
-            function (ActeLabo) {
+        .controller('ListActeLaboControlleur', ['ActeLabo', 'ActeLaboAvecRes',
+            function (ActeLabo, ActeLaboAvecRes) {
                 //console.log("coucou1");
                 var self = this;
+                ActeLaboAvecRes.get().then(function (res) {
+                    //console.log("coucou");
+                    self.actel = res.data;
+                });
                 //console.log("coucou2");
-                this.actel = ActeLabo.query();
                 //console.log("coucou3");
                 self.afficher = function () {
                     $location.path("/afficherActe");
@@ -91,11 +95,31 @@ angular.module('monApp').controller('CrayonsController', ['Crayons',
                 //MARCHE PAS POUR L'INSTANT
                 this.delete = function (actel) {
                     // appel DELETE asynchrone au service web sur /crayons/{id}
-                    //cr.$delete();
-                    ActeLabo.delete(actel);
+                    actel.$delete();
+                    //ActeLabo.delete(actel);
                     // remet à jour le tableau des crayons en suprimant l'élément effacé
                     self.actel.splice(self.actel.indexOf(actel), 1);
                 };
+            }
+        ])
+        
+        .controller('EditActeControlleur', ['$routeParams','ActeLabo', '$location', 'Resultat',
+            function ($routeParams, ActeLabo, $location, Resultat) {
+                var self = this;
+                this.res = new Resultat();
+                this.actel = ActeLabo.get({id: $routeParams.id});
+                this.update = function () {
+                    self.actel.$save(function (u, putResponseHeaders) {
+                        console.dir(u);
+                        console.log(angular.toJson(self.actel));
+                        
+//                        self.actel.$save();
+                        self.res.$save();
+                        self.actel.resultat = self.res;
+                        $location.path("/");
+                        //console.log("coucou6");
+                    });
+                }
             }
         ])
 
@@ -115,10 +139,6 @@ angular.module('monApp').controller('CrayonsController', ['Crayons',
                         //console.log("coucou6");
 
                     });
-
-
-
-
                 };
                 self.submit = function () {
                     $location.path("/listeDemande");

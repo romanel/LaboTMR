@@ -21,6 +21,14 @@ angular.module('monApp').factory('ActeLaboSansRes', ['$http', function ($http) {
 
     }]);
 
+angular.module('monApp').factory('ActeLaboAvecRes', ['$http', function ($http) {
+
+        return {get: function () {
+                return $http.get("/LaboTMR/webresources/generic/actelabo/avecresultat");
+            }};
+
+    }]);
+
 
 angular.module('monApp').factory('Admissions', ['$resource', function ($resource) {
 

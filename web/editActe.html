@@ -4,3 +4,25 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<div ng-show="ctrl.actel">
+    <h2>Acte n° : {{ctrl.actel.id}} </h2>
+    
+    <u>Patient : </u><br>
+    IPP : {{ctrl.actel.adm.ipp}}<br>
+    Nom : {{ctrl.actel.adm.nom}}<br>
+    Prenom : {{ctrl.actel.adm.prenom}}<br><br>
+    
+    <u>Acte réalisé : </u><br>
+    Date de demande : {{ctrl.actel.date_demande_labo}}<br>
+    Unité Fonctionelle : {{ctrl.actel.unite_fonctionnel}}<br>
+    NABM : {{ctrl.actel.NABM}} <br><br>
+    
+    
+    <u>Résultat : </u><br>
+    Date de réalisation : {{ctrl.actel.resultat.date}} <label>Choisir la date de réalisation : (YYYY/MM/DD)</label>
+        <input type="text" ng-model="ctrl.actel.date_realisation_acte"/><br> 
+    Résultat : {{ctrl.actel.resultat.resu}} <label>Indiquer le résultat de l'acte : </label>
+        <input type="text" ng-model="ctrl.res.resu"/><br><br>
+        
+    <input type="submit" value="Modifier"  ng-click="ctrl.update()"/>    
+</div>

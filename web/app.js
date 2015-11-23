@@ -37,6 +37,10 @@ angular.module('monApp').config(['$routeProvider', function routeConfig($routePr
                     controller: "AfficherActeControlleur as ctrl",
                     templateUrl: 'afficherActe.html'
                 })
+                .when('/editActe/:id', {
+                    controller: "EditActeControlleur as ctrl",
+                    templateUrl: 'editActe.html'
+                })
                 .when('/crayon/edit/:id', {
                     controller: "CrayonEditController as ctrl",
                     templateUrl: 'editCrayon.html'
