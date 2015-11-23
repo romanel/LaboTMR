@@ -88,12 +88,13 @@ angular.module('monApp').controller('CrayonsController', ['Crayons',
                 self.modifier = function () {
                     $location.path("/editActe");
                 }
+                //MARCHE PAS POUR L'INSTANT
                 this.delete = function (actel) {
                     // appel DELETE asynchrone au service web sur /crayons/{id}
                     //cr.$delete();
                     ActeLabo.delete(actel);
                     // remet à jour le tableau des crayons en suprimant l'élément effacé
-                    self.actel.splice(this.actel.indexOf(actel), 1);
+                    self.actel.splice(self.actel.indexOf(actel), 1);
                 };
             }
         ])
