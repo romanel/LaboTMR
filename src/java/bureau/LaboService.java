@@ -192,7 +192,7 @@ public class LaboService {
     
     public void deleteActelaboById(Long id) {
         em.getTransaction( ).begin( );
-        em.createQuery("DELETE acte FROM Actelabo WHERE id ="+id).executeUpdate();
+        em.createQuery("DELETE FROM ActeLabo WHERE id ="+id).executeUpdate();
         em.getTransaction().commit();
     }
     

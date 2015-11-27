@@ -106,7 +106,6 @@ angular.module('monApp')
         .controller('EditActeControlleur', ['$routeParams','ActeLabo', '$location', 'Resultat',
             function ($routeParams, ActeLabo, $location, Resultat) {
                 var self = this;
-                this.res = new Resultat();
                 this.actel = ActeLabo.get({id: $routeParams.id});
                 this.update = function () {
                     self.actel.$save(function (u, putResponseHeaders) {
@@ -114,8 +113,8 @@ angular.module('monApp')
                         console.log(angular.toJson(self.actel));
                         
 //                        self.actel.$save();
-                        self.res.$save();
-                        self.actel.resultat = self.res;
+                        self.actel.resultat.$save();
+                        //self.actel.resultat = self.res;
                         $location.path("/");
                         //console.log("coucou6");
                     });
