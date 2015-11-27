@@ -91,8 +91,7 @@ angular.module('monApp')
                 }
                 self.modifier = function () {
                     $location.path("/editActe");
-                }
-                //MARCHE PAS POUR L'INSTANT
+                }                
                 this.delete = function (actel) {
                     // appel DELETE asynchrone au service web sur /crayons/{id}
                     //actel.$delete();
@@ -111,10 +110,8 @@ angular.module('monApp')
                     self.actel.$save(function (u, putResponseHeaders) {
                         console.dir(u);
                         console.log(angular.toJson(self.actel));
-                        
-//                        self.actel.$save();
-                        self.actel.resultat.$save();
-                        //self.actel.resultat = self.res;
+                        self.actel.date_realisation_acte = self.actel.resultat.date;
+                        self.actel.$save();
                         $location.path("/");
                         //console.log("coucou6");
                     });
