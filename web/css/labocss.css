@@ -7,30 +7,65 @@ and open the template in the editor.
     Created on : 30 nov. 2015, 10:18:32
     Author     : rleguede
 */
-head{
-  color: #000000; 
-  font-size: 20px; 
-  font-family: arial, geneva, sans-serif; 
-  background-color: #FAEBD7
-}
+body, html{height:100%;}
+
 body { 
-  color: #000000; 
-  font-size: 12px; 
-  font-family: calibri, geneva, sans-serif; 
-  background-color: #E0FFFF 
+    color: #000000; 
+    overflow:hidden;
+    font-family: calibri, geneva, sans-serif; 
+    background-color: #FFEBCD;  
+    margin: 0px;
 }
+
+#corps{
+    padding-left: 50px; 
+    padding-top: 50px;
+    font-size: 20px;
+}
+
+
 header{
-    background-color: #AFEEEE
+    background-color: #DEB887;
+    margin: 0px;
+    padding-bottom: 20px;
+    text-align: center;
 }
+
+h1{
+    margin: 0px;
+}
+
 p { 
-  color: #333333; 
-  font-size: 12px;
-  text-align: justify 
+    color: #333333; 
+    font-size: 20px;
+    text-align: justify; 
+        
 }
+
+#main{
+    max-width:1280px;
+    min-height:100%;
+    position:relative;
+}
+
 footer{
-  color: #000000; 
-  font-size: 20px; 
-  font-family: arial, geneva, sans-serif; 
-  background-color: #FAEBD7;
-  margin: 0 0 0 0
+    background:#C58877;
+    position:absolute;
+    bottom:0;
+    font-size: 13px;
+    width:100%;    
+    text-align: center;
+    padding-top:20px;  
+}
+
+#bas_page{
+    // centrer sur la page
+    text-align: center;
+    width: 100%;
+}
+th{
+    //italique
+}
+td{
+    
 }
