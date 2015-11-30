@@ -5,3 +5,19 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <ng-include src="'bandeauService.html'"></ng-include>
+
+<h1>Liste des actes du service</h1>
+
+    <table>       
+            <tr>
+                <th>Acte</th>
+                <th>NABM</th>
+                <th>IEP</th>
+            </tr>
+            <tr ng-repeat='actel in ctrl.actel'>
+                <td ng-model="ctrl.actel.id">{{actel.id}}</td>
+                <td ng-model="ctrl.actel.NABM">{{actel.NABM}}</td>
+                <td ng-model="ctrl.actel.adm.iep">{{actel.adm.iep}}</td>
+                <td><a href="#/afficherActe/{{actel.id}}">Afficher Acte</a></td>          
+            </tr>
+    </table>

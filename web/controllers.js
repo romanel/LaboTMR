@@ -41,6 +41,7 @@ angular.module('monApp')
 //            }
 //        ])
 
+
         .controller('ActeNewControlleur', ['ActeLabo', 'Admissions',
             function (ActeLabo, Admissions) {
                 var self = this;
@@ -64,6 +65,16 @@ angular.module('monApp')
                 self.submit = function () {
                     $location.path("/editResultat");
                 }
+            }
+        ])
+
+        .controller('ListeActeLaboServiceControlleur', ['$routeParams','ActeLabo', 'ActeLaboParService',
+            function ($routeParams, ActeLabo, ActeLaboParService) {
+                var self = this;
+                this.actel = ActeLabo.get({unite_fonctionnel: $routeParams.unite_fonctionnel});
+                ActeLaboParService.get().then(function (res) {
+                    self.actel = res.data;
+                });
             }
         ])
 
@@ -91,7 +102,7 @@ angular.module('monApp')
                 }
                 self.modifier = function () {
                     $location.path("/editActe");
-                }                
+                }
                 this.delete = function (actel) {
                     // appel DELETE asynchrone au service web sur /crayons/{id}
                     //actel.$delete();
@@ -101,8 +112,8 @@ angular.module('monApp')
                 };
             }
         ])
-        
-        .controller('EditActeControlleur', ['$routeParams','ActeLabo', '$location', 'Resultat',
+
+        .controller('EditActeControlleur', ['$routeParams', 'ActeLabo', '$location', 'Resultat',
             function ($routeParams, ActeLabo, $location, Resultat) {
                 var self = this;
                 this.actel = ActeLabo.get({id: $routeParams.id});

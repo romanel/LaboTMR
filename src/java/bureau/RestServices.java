@@ -130,7 +130,7 @@ public class RestServices {
     }
     
     @GET
-    @Path("actelabo/parservice")
+    @Path("actelabo/{unite_fonctionnel}")
     @Produces("application/json")
     public List<ActeLabo> getActeLabosParService(String service) {
         return serv.getActelaboParService(service);

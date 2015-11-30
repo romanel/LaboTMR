@@ -15,6 +15,10 @@ angular.module('monApp', ['ngRoute', 'ngResource']);
 angular.module('monApp').config(['$routeProvider', function routeConfig($routeProvider) {
         $routeProvider
                 .when('/', {
+                    controller: "ConnexionControlleur as ctrl",
+                    templateUrl: 'connexion.html'
+                })
+                .when('/demandeActe', {
                     controller: "ActeNewControlleur as ctrl",
                     templateUrl: 'demandeActe.html'
                 })
@@ -24,7 +28,8 @@ angular.module('monApp').config(['$routeProvider', function routeConfig($routePr
                 .when('/accueilService', {
                     templateUrl: 'accueilService.html'
                 })
-                .when('/listeActeLaboService', {
+                .when('/listeActeLaboService/:unite_fonctionnel', {
+                    controller: "ListeActeLaboServiceControlleur as ctrl",
                     templateUrl: 'listeActeLaboService.html'
                 })
                 .when('/listeActeLabo', {

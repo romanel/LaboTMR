@@ -4,9 +4,23 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-
-<form>
-    <label>Login :</label><input type="text" name="login">
-    <label>Mot de passe :</label><input type="text" name="psw">
-    <input type="submit" name="connexion">    
-</form>
+<table align="center" id="connexion">
+    <tr>
+        <td>Accès par l'équipe laboratoire</td>
+        <td>
+                <label>Choisir votre UF : </label>
+                <select name="uf" ng-model="ctrl.actel.unite_fonctionnel">
+                    <option value="Medecine">Medecine</option>
+                    <option value="Obstetrique">Obstetrique</option>
+                    <option value="Chirurgie">Chirurgie</option>
+                    <option value="Pediatrie">Pediatrie</option>
+                    <option value="Psychiatrie">Psychiatrie</option>
+                    <option value="Nephrologie">Nephrologie</option>
+                </select>
+        </td>    
+    </tr>
+    <tr>
+        <td><a href="#/accueil/"> Accueil Laboratoire</a></td>
+        <td><a href="#/accueilService/"> Accueil Service</a></td>
+    </tr>
+</table>
