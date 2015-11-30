@@ -50,9 +50,6 @@ angular.module('monApp')
                     //console.log("lklkl");
                     self.actel.$save();
                 };
-//                self.accueil = function () {
-//                    $location.path("/accueil");
-//                }
             }
         ])
 

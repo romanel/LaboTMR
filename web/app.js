@@ -21,6 +21,12 @@ angular.module('monApp').config(['$routeProvider', function routeConfig($routePr
                 .when('/accueil', {
                     templateUrl: 'accueil.html'
                 })
+                .when('/accueilService', {
+                    templateUrl: 'accueilService.html'
+                })
+                .when('/listeActeLaboService', {
+                    templateUrl: 'listeActeLaboService.html'
+                })
                 .when('/listeActeLabo', {
                     controller: "ListActeLaboControlleur as ctrl",
                     templateUrl: 'listeActeLabo.html'
