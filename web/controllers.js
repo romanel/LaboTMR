@@ -50,6 +50,9 @@ angular.module('monApp')
                     //console.log("lklkl");
                     self.actel.$save();
                 };
+//                self.accueil = function () {
+//                    $location.path("/accueil");
+//                }
             }
         ])
 
@@ -133,7 +136,6 @@ angular.module('monApp')
                         self.actel.$save();
                         $location.path("/");
                         //console.log("coucou6");
-
                     });
                 };
                 self.submit = function () {

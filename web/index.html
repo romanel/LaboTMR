@@ -21,12 +21,14 @@ and open the template in the editor.
 
     </head>
     <body ng-app="monApp">
+
         <header>
             <!-- Placez ici le contenu de l'en-tête de votre page -->
             <h1> Laboratoire TMR </h1>
         </header>
 
-
+        <ng-include src="'bandeauLabo.html'"></ng-include>
+        
         <div ng-view id="corps"></div>       
 
         <footer>
