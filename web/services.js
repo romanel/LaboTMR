@@ -24,7 +24,7 @@ angular.module('monApp').factory('ActeLaboSansRes', ['$http', function ($http) {
 angular.module('monApp').factory('ActeLaboParService', ['$http', function ($http) {
 
         return {get: function () {
-                return $http.get("/LaboTMR/webresources/generic/actelabo/:unite_fonctionnel", {unite_fonctionnel: '@unite_fonctionnel'});
+                return $http.get("/LaboTMR/webresources/generic/actelabo/uf/:unite_fonctionnel", {unite_fonctionnel: '@unite_fonctionnel'});
             }};
 
     }]);
