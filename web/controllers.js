@@ -6,6 +6,7 @@
 
 // Code Nicolas Singer 
 
+
 angular.module('monApp')
 //        .controller('CrayonsController', ['Crayons',
 //            function (Crayons) {
@@ -68,7 +69,7 @@ angular.module('monApp')
             }
         ])
 
-        .controller('ListeActeLaboServiceControlleur', ['$routeParams','ActeLabo', 'ActeLaboParService',
+        .controller('ListeActeLaboServiceControlleur', ['$routeParams', 'ActeLabo', 'ActeLaboParService',
             function ($routeParams, ActeLabo, ActeLaboParService) {
                 var self = this;
                 this.actel = ActeLabo.get({unite_fonctionnel: $routeParams.unite_fonctionnel});
